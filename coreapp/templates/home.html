@@ -9,19 +9,18 @@
       <p class="tag">RESUME CHECKER</p>
       <h1>Is your resume good enough?</h1>
       <p class="description">
-        A free and fast AI resume checker doing crucial checks to ensure your resume is ready to perform and get you interview callbacks.
+        A free and fast AI resume checker doing 16 crucial checks to ensure your resume is ready to perform and get you interview callbacks.
       </p>
 
       {% if score %}
         <div class="upload-box" style="border: 2px solid #2db783; background: white;">
             <h2 style="color: #2db783;">Score: {{ score }}%</h2>
             <p><strong>Result:</strong> {{ status }}</p>
-            <p>Hello {{ user_name }}, your resume has been analyzed!</p>
             <a href="/" class="btn-upload" style="text-decoration: none; display: inline-block; margin-top: 10px;">Check Another</a>
         </div>
       {% else %}
         <div class="upload-box">
-          <form method="POST" enctype="multipart/form-data" id="resumeForm">
+          <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <p style="margin-bottom: 15px;">Drop your resume here or choose a file.<br>
             PDF & DOCX only. Max 2MB.</p>
@@ -31,18 +30,14 @@
             <input type="file" name="resume" id="file-input" accept=".pdf,.docx" style="display: none;" onchange="document.getElementById('file-chosen').textContent = this.files[0].name">
             
             <div style="text-align: center;">
-                <label for="file-input" class="btn-upload" style="cursor: pointer; display: inline-block; background: #f3f4f6; color: #374151; border: 1px solid #ddd; width: 100%;">
+                <label for="file-input" class="btn-upload" style="cursor: pointer; display: inline-block; width: 100%;">
                     Choose File
                 </label>
                 <span id="file-chosen" style="display: block; margin-top: 10px; font-size: 12px; color: #6b7280;">No file chosen</span>
                 
-                <button type="submit" class="btn-primary" style="width: 100%; margin-top: 20px; padding: 12px;">Analyze My Resume</button>
+                <button type="submit" class="btn-primary" style="width: 100%; margin-top: 20px;">Analyze My Resume</button>
             </div>
           </form>
-
-          <p class="privacy" style="text-align: center;">
-            <i class="fa-solid fa-lock"></i> Privacy guaranteed
-          </p>
         </div>
       {% endif %}
     </div>
